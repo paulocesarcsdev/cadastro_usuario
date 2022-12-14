@@ -1,16 +1,20 @@
-import 'package:flutter/cupertino.dart';
+import 'package:cadastro_usuario/data/dummy_user.dart';
+import 'package:cadastro_usuario/models/user.dart';
 import 'package:flutter/material.dart';
 
-class UserList extends StatelessWidget{
+class UserList extends StatelessWidget {
   const UserList({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
+    Map<String, User> users = {...DUMMY_USER};
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Lista de Usuários')
-        ),
-
+      appBar: AppBar(title: const Text('Lista de Usuários')),
+      body: ListView.builder(
+        itemCount: users.length,
+        itemBuilder: (context, index) =>
+            Text(users.values.elementAt(index).name),
+      ),
     );
   }
 }
