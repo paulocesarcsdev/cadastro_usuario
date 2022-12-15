@@ -10,7 +10,10 @@ class UserList extends StatelessWidget {
   Widget build(BuildContext context) {
     Map<String, User> users = DUMMY_USER;
     return Scaffold(
-      appBar: AppBar(title: const Text('Lista de Usuários')),
+      appBar: AppBar(
+        title: const Text('Lista de Usuários'),
+        actions: <Widget>[IconButton(onPressed: () {}, icon: Icon(Icons.add))],
+      ),
       body: ListView.builder(
         itemCount: users.length,
         itemBuilder: (context, index) => UserTitle(
