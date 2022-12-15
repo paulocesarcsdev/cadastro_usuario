@@ -1,3 +1,4 @@
+import 'package:cadastro_usuario/components/user_title.dart';
 import 'package:cadastro_usuario/data/dummy_user.dart';
 import 'package:cadastro_usuario/models/user.dart';
 import 'package:flutter/material.dart';
@@ -7,13 +8,14 @@ class UserList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Map<String, User> users = {...DUMMY_USER};
+    Map<String, User> users = DUMMY_USER;
     return Scaffold(
       appBar: AppBar(title: const Text('Lista de Usuários')),
       body: ListView.builder(
         itemCount: users.length,
-        itemBuilder: (context, index) =>
-            Text(users.values.elementAt(index).name),
+        itemBuilder: (context, index) => UserTitle(
+          user: users.values.elementAt(index),
+        ),
       ),
     );
   }
