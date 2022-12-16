@@ -1,31 +1,29 @@
 import 'package:cadastro_usuario/components/user_title.dart';
-import 'package:cadastro_usuario/data/dummy_user.dart';
-import 'package:cadastro_usuario/models/user.dart';
+import 'package:cadastro_usuario/provider/users.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class UserList extends StatelessWidget {
   const UserList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Map<String, User> users = DUMMY_USER;
+    Users users = Provider.of<Users>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Lista de Usuários'),
         actions: <Widget>[
           IconButton(
               onPressed: () {},
-              icon: Icon(
+              icon: const Icon(
                 Icons.add,
                 color: Colors.pink,
               ))
         ],
       ),
       body: ListView.builder(
-        itemCount: users.length,
-        itemBuilder: (context, index) => UserTitle(
-          user: users.values.elementAt(index),
-        ),
+        itemCount: users.count,
+        itemBuilder: (context, i) => UserTitle(user: users.byIndex(i)),
       ),
     );
   }

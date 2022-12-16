@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import '../models/user.dart';
 
 class Users with ChangeNotifier {
-  Map<String, User> _item = {...DUMMY_USER};
+  final Map<String, User> _item = {...DUMMY_USER};
 
   List<User> get all {
     return [..._item.values];
@@ -12,5 +12,11 @@ class Users with ChangeNotifier {
 
   int get count {
     return _item.length;
+  }
+
+  //Ainda tenho erro no user_list.dart
+  //estou adicionanmdo isso para ver se la volta a funcionar
+  User byIndex(int i) {
+    return _item.values.elementAt(i);
   }
 }
