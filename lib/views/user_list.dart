@@ -3,6 +3,8 @@ import 'package:cadastro_usuario/provider/users.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../models/user.dart';
+
 class UserList extends StatelessWidget {
   const UserList({Key? key}) : super(key: key);
 
@@ -14,16 +16,27 @@ class UserList extends StatelessWidget {
         title: const Text('Lista de Usuários'),
         actions: <Widget>[
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                users.put(User(
+                    name: 'Teste',
+                    email: 'aluno@aluno.com',
+                    avatarUrl: '',
+                    id: ''));
+              },
               icon: const Icon(
                 Icons.add,
-                color: Colors.pink,
+                color: Colors.white,
               ))
         ],
       ),
       body: ListView.builder(
-        itemCount: users.count,
-        itemBuilder: (context, i) => UserTitle(user: users.byIndex(i)),
+        itemCount: Provider.of<Users>(context, listen: false).userList.length,
+        //itemCount: users.count,
+        itemBuilder: (context, i) {
+          return UserTitle(
+            user: Provider.of<Users>(context, listen: false).userList[i],
+          );
+        },
       ),
     );
   }
