@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 
-import '../models/user.dart';
+import '../../models/user_model.dart';
 
-class UserTitle extends StatelessWidget {
-  final User user;
+class UserTile extends StatelessWidget {
+  final UserModel user;
 
-  const UserTitle({Key? key, required this.user}) : super(key: key);
+  const UserTile({Key? key, required this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final avatar = user.avatarUrl.isEmpty
-        ? const CircleAvatar(child: Icon(Icons.person))
-        : CircleAvatar(backgroundImage: NetworkImage(user.avatarUrl));
+    final avatar = CircleAvatar(child: Icon(Icons.person));
     return ListTile(
       leading: avatar,
-      title: Text(user.name),
+      title: Text(user.nome),
       subtitle: Text(user.email),
       trailing: Container(
         width: 100,
