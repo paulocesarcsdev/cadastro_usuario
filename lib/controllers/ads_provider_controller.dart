@@ -6,8 +6,8 @@ import '../models/ads_model.dart';
 class AdsProviderController extends ChangeNotifier {
   //notifyListeners();
 
-  AdsModel? adsList;
-  final adsProvider = AdsData();
+  List<AdsModel> adsList = [];
+  final adsData = AdsData();
   getAds() async {
     //adsList = await adsProvider.getAds();
     notifyListeners();

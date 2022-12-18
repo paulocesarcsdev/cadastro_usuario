@@ -8,28 +8,30 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Prova final - Paulo César')),
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Text(
-                "Esse app é sobre anúncios",
-                style: TextStyle(fontSize: 28),
-              ),
-              ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => LoginPage(),
-                        ));
-                  },
-                  child: const Text("Continuar")),
-            ],
-          ),
+      appBar: AppBar(
+          centerTitle: true, title: const Text('Prova final - Paulo César')),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Text(
+              "Esse app é sobre anúncios",
+              style: TextStyle(fontSize: 28),
+            ),
+            SizedBox(
+              height: 56,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LoginPage(),
+                      ));
+                },
+                child: const Text("Continuar")),
+          ],
         ),
       ),
     );
